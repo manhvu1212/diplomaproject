@@ -17,9 +17,9 @@
     <!-- Bootstrap 3.3.5 -->
     <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/bootstrap/css/bootstrap.min.css">
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/font-awesome/4.5.0/css/font-awesome.min.css">
     <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/ionicons/2.0.1/css/ionicons.min.css">
     <!-- Theme style -->
     <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/dist/css/AdminLTE.min.css">
     <!-- AdminLTE Skins. Choose a skin from the css/skins
@@ -45,6 +45,8 @@
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+
+    @yield('style')
 </head>
 
 <body class="hold-transition skin-blue sidebar-mini fixed">
@@ -68,7 +70,7 @@
         <div class="pull-right hidden-xs">
             <b>Version</b> 2.3.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights
+        <strong>Copyright &copy; 2014-2015 <a href="#">Almsaeed Studio</a>.</strong> All rights
         reserved.
     </footer>
     <!-- END FOOTER -->
@@ -78,7 +80,7 @@
 <!-- jQuery 2.1.4 -->
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/jQuery/jQuery-2.1.4.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
-<script src="https://code.jquery.com/ui/1.11.4/jquery-ui.min.js"></script>
+<script src="/assets/backend/AdminLTE-2.3.0/plugins/jQueryUI/1.11.4/jquery-ui.min.js"></script>
 <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
 <script>
     $.widget.bridge('uibutton', $.ui.button);
@@ -86,7 +88,7 @@
 <!-- Bootstrap 3.3.5 -->
 <script src="/assets/backend/AdminLTE-2.3.0/bootstrap/js/bootstrap.min.js"></script>
 <!-- Morris.js charts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.1.0/raphael-min.js"></script>
+<script src="/assets/backend/AdminLTE-2.3.0/plugins/raphael/2.0.0/raphael-min.js"></script>
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/morris/morris.min.js"></script>
 <!-- Sparkline -->
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/sparkline/jquery.sparkline.min.js"></script>

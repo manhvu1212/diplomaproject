@@ -42,6 +42,8 @@
         <?php print_r(Sentinel::getUser()); ?>
         <a href={!! route('logout') !!}>Đăng xuất</a>
         {!! Session('notification') !!}
+        <br/>
+        {!! Utilities::getUserInfo() !!}
     </div>
 </div>
 </body>

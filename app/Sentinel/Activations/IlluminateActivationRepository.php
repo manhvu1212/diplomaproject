@@ -34,7 +34,7 @@ class IlluminateActivationRepository implements ActivationRepositoryInterface
      *
      * @var string
      */
-    protected $model = 'Cartalyst\Sentinel\Activations\EloquentActivation';
+    protected $model = 'App\Sentinel\Activations\EloquentActivation';
 
     /**
      * The activation expiration time, in seconds.

@@ -39,6 +39,7 @@ class MigrationCartalystSentinel extends Migration
             $table->timestamps();
 
             $table->engine = 'InnoDB';
+            $table->unique('user_id');
         });
 
         Schema::create('persistences', function (Blueprint $table) {

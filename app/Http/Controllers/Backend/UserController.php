@@ -9,8 +9,11 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
+use App\Role;
+use App\User;
 use Cartalyst\Sentinel\Checkpoints\NotActivatedException;
 use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
+use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Redirect;
@@ -21,7 +24,24 @@ class UserController extends Controller
 {
     public function index()
     {
-        return view('layout.backend.user.index');
+        $users = (new User())->all();
+        foreach ($users as &$value) {
+            $user = Sentinel::findById($value->_id);
+            if (Activation::exists($user)) {
+                $value->activation = 0;
+            } elseif (Activation::completed($user)) {
+                $value->activation = 1;
+            } else {
+                $value->activation = -1;
+            }
+        }
+        $roles = (new Role())->all();
+
+        return view('layout.backend.user.index')
+            ->with(array(
+                'users' => $users,
+                'roles' => $roles
+            ));
     }
 
     public function login()
