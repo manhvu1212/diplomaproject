@@ -12,7 +12,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Log in</title>
+    <title>AdminLTE 2 | Sign up</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -40,7 +40,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <b>Admin</b>
+        <b>Đăng ký</b>
     </div><!-- /.login-logo -->
 
     @if(session()->has('notification'))
@@ -55,34 +55,43 @@
     @endif
 
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        <form action="/login" method="post" id="form-login">
+        <p class="login-box-msg">Đăng ký bằng email</p>
+        <form action="/signup" method="post" id="form-sign-up">
             {!! csrf_field() !!}
+            <div class="form-group has-feedback">
+                <input type="text" name="lastname" class="form-control" placeholder="Họ tên đệm">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="text" name="firstname" class="form-control" placeholder="Tên">
+                <span class="glyphicon glyphicon-user form-control-feedback"></span>
+            </div>
             <div class="form-group has-feedback">
                 <input type="email" name="email" class="form-control" placeholder="Email">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" id="password" class="form-control" placeholder="Mật khẩu">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" name="repassword" class="form-control" placeholder="Nhập lại mật khẩu">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
                 <div class="col-xs-4 col-xs-offset-8">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng ký</button>
                 </div><!-- /.col -->
             </div>
         </form>
 
         <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
-                using Facebook</a>
-            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in
-                using Google+</a>
+            <p>- hoặc -</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Đăng ký bằng Facebook</a>
+            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Đăng ký bằng Google+</a>
         </div><!-- /.social-auth-links -->
 
-        <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
+        Đã có tài khoản <a href="{!! route('login') !!}" class="text-center">Đăng nhập</a> ngay.
 
     </div><!-- /.login-box-body -->
 </div><!-- /.login-box -->
@@ -98,35 +107,6 @@
 <!-- Custom script -->
 <script src="/js/login_signup.js"></script>
 
-<script>
-    $(function () {
-        $('input').iCheck({
-            checkboxClass: 'icheckbox_square-blue',
-            radioClass: 'iradio_square-blue',
-            increaseArea: '20%' // optional
-        });
-    });
 
-    $('#form-login').validate({
-        rules: {
-            email: {
-                required: true,
-                email: true
-            },
-            password: {
-                required: true
-            }
-        },
-        messages: {
-            email: {
-                required: 'Vui lòng điền email.',
-                email: 'Email không đúng'
-            },
-            password: {
-                required: 'Vui lòng điền mật khẩu.'
-            }
-        }
-    });
-</script>
 </body>
 </html>

@@ -49,7 +49,7 @@ class UserController extends Controller
         $input = Input::all();
         $rules = array(
             'email' => 'required|email',
-            'password' => 'required'
+            'password' => 'required|min:8'
         );
         if (!Validator::make($input, $rules)->fails()) {
             $credentials = [
@@ -69,6 +69,31 @@ class UserController extends Controller
             }
         } else {
             Session::flash('notification', trans('general.Email or Password is not invalid'));
+        }
+        return Redirect::back();
+    }
+
+    public function signup()
+    {
+        $input = Input::all();
+        $rules = array(
+            'firstname' => 'required',
+            'lastname' => 'required',
+            'email' => 'required|email',
+            'password' => 'required|min:8'
+        );
+        if (!Validator::make($input, $rules)->fails()) {
+            $credentials = [
+                'login' => $input['email']
+            ];
+            if (Sentinel::findByCredentials($credentials) !== null) {
+                $user = Sentinel::registerAndActivate($input);
+                Session::flash('notification', 'Đăng ký thành công.');
+            } else {
+                Session::flash('notification', 'Email này đã được đăng ký. <br/>Vui lòng thử đăng nhập lại.');
+            }
+        } else {
+            Session::flash('notification', 'Đăng ký không thành công. <br/>Vui lòng nhập vào những ô bắt buộc.');
         }
         return Redirect::back();
     }

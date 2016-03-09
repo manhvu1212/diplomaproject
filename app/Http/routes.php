@@ -29,6 +29,7 @@ Route::group(['middleware' => 'web'], function () {
         Route::get('/signup', ['as' => 'signup', 'uses' => function() {
             return view('layout.backend.signup');
         }]);
+        Route::post('/signup', 'UserController@signup');
     });
 
     Route::group(['as' => 'admin::', 'namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {

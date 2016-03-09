@@ -40,7 +40,7 @@
 <body class="hold-transition login-page">
 <div class="login-box">
     <div class="login-logo">
-        <b>Admin</b>
+        <b>Đăng nhập</b>
     </div><!-- /.login-logo -->
 
     @if(session()->has('notification'))
@@ -55,7 +55,7 @@
     @endif
 
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">Đăng nhập bằng email</p>
         <form action="/login" method="post" id="form-login">
             {!! csrf_field() !!}
             <div class="form-group has-feedback">
@@ -63,33 +63,33 @@
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" name="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="Mật khẩu">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
                 <div class="col-xs-8">
                     <div class="checkbox icheck">
                         <label>
-                            <input type="checkbox" name="remember"> Remember Me
+                            <input type="checkbox" name="remember"> Giữ đăng nhập
                         </label>
                     </div>
                 </div><!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">Đăng nhập</button>
                 </div><!-- /.col -->
             </div>
         </form>
 
         <div class="social-auth-links text-center">
-            <p>- OR -</p>
-            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Sign in
-                using Facebook</a>
-            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Sign in
-                using Google+</a>
+            <p>- hoặc -</p>
+            <a href="#" class="btn btn-block btn-social btn-facebook btn-flat"><i class="fa fa-facebook"></i> Đăng nhập
+                với Facebook</a>
+            <a href="#" class="btn btn-block btn-social btn-google btn-flat"><i class="fa fa-google-plus"></i> Đăng nhập
+                với Google+</a>
         </div><!-- /.social-auth-links -->
 
-        <a href="#">I forgot my password</a><br>
-        <a href="register.html" class="text-center">Register a new membership</a>
+        <a href="#">Quên mật khẩu</a><br>
+        <a href="{!! route('signup') !!}" class="text-center">Đăng ký mới</a>
 
     </div><!-- /.login-box-body -->
 </div><!-- /.login-box -->
@@ -105,12 +105,5 @@
 <!-- Custom script -->
 <script src="/js/login_signup.js"></script>
 
-<script>
-    $(function () {
-
-    });
-
-
-</script>
 </body>
 </html>
