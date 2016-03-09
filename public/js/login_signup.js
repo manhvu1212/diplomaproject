@@ -6,10 +6,10 @@ var SIGNUP = {
     validate_signup: function () {
         $('#form-sign-up').validate({
             rules: {
-                firstname: {
+                first_name: {
                     required: true
                 },
-                lastname: {
+                last_name: {
                     required: true
                 },
                 email: {
@@ -26,10 +26,10 @@ var SIGNUP = {
                 }
             },
             messages: {
-                firstname: {
+                first_name: {
                     required: 'Vui lòng nhập tên.',
                 },
-                lastname: {
+                last_name: {
                     required: 'Vui lòng nhập họ.',
                 },
                 email: {

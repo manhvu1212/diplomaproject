@@ -59,11 +59,11 @@
         <form action="/signup" method="post" id="form-sign-up">
             {!! csrf_field() !!}
             <div class="form-group has-feedback">
-                <input type="text" name="lastname" class="form-control" placeholder="Họ tên đệm">
+                <input type="text" name="last_name" class="form-control" placeholder="Họ tên đệm">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="text" name="firstname" class="form-control" placeholder="Tên">
+                <input type="text" name="first_name" class="form-control" placeholder="Tên">
                 <span class="glyphicon glyphicon-user form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">

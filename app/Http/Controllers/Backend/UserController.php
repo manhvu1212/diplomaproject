@@ -77,8 +77,8 @@ class UserController extends Controller
     {
         $input = Input::all();
         $rules = array(
-            'firstname' => 'required',
-            'lastname' => 'required',
+            'first_name' => 'required',
+            'last_name' => 'required',
             'email' => 'required|email',
             'password' => 'required|min:8'
         );
@@ -86,8 +86,9 @@ class UserController extends Controller
             $credentials = [
                 'login' => $input['email']
             ];
-            if (Sentinel::findByCredentials($credentials) !== null) {
-                $user = Sentinel::registerAndActivate($input);
+            if (Sentinel::findByCredentials($credentials) === null) {
+                $user = Sentinel::register($input);
+                $activation = Activation::create($user);
                 Session::flash('notification', 'Đăng ký thành công.');
             } else {
                 Session::flash('notification', 'Email này đã được đăng ký. <br/>Vui lòng thử đăng nhập lại.');
