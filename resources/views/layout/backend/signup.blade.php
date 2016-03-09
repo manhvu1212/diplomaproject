@@ -1,9 +1,9 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: manhv
- * Date: 05/03/2016
- * Time: 11:24 AM
+ * User: vu
+ * Date: 3/9/16
+ * Time: 2:54 PM
  */
 ?>
 
@@ -67,14 +67,7 @@
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
-                <div class="col-xs-8">
-                    <div class="checkbox icheck">
-                        <label>
-                            <input type="checkbox" name="remember"> Remember Me
-                        </label>
-                    </div>
-                </div><!-- /.col -->
-                <div class="col-xs-4">
+                <div class="col-xs-4 col-xs-offset-8">
                     <button type="submit" class="btn btn-primary btn-block btn-flat">Log In</button>
                 </div><!-- /.col -->
             </div>
@@ -107,10 +100,33 @@
 
 <script>
     $(function () {
-
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' // optional
+        });
     });
 
-
+    $('#form-login').validate({
+        rules: {
+            email: {
+                required: true,
+                email: true
+            },
+            password: {
+                required: true
+            }
+        },
+        messages: {
+            email: {
+                required: 'Vui lòng điền email.',
+                email: 'Email không đúng'
+            },
+            password: {
+                required: 'Vui lòng điền mật khẩu.'
+            }
+        }
+    });
 </script>
 </body>
 </html>

@@ -21,10 +21,14 @@ Route::group(['middleware' => 'web'], function () {
     }]);
 
     Route::group(['namespace' => 'Backend', 'middleware' => 'guest'], function () {
-        Route::get('/login', function () {
+        Route::get('/login', ['as' => 'login', 'uses' => function () {
             return view('layout.backend.login');
-        });
+        }]);
         Route::post('/login', 'UserController@login');
+
+        Route::get('/signup', ['as' => 'signup', 'uses' => function() {
+            return view('layout.backend.signup');
+        }]);
     });
 
     Route::group(['as' => 'admin::', 'namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
