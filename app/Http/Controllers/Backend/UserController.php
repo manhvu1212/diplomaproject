@@ -16,6 +16,7 @@ use Cartalyst\Sentinel\Checkpoints\ThrottlingException;
 use Cartalyst\Sentinel\Laravel\Facades\Activation;
 use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Validator;
@@ -89,6 +90,12 @@ class UserController extends Controller
             if (Sentinel::findByCredentials($credentials) === null) {
                 $user = Sentinel::register($input);
                 $activation = Activation::create($user);
+                Mail::send('email.register', ['user_id' => $activation['user_id'], 'code' => $activation['code'], 'first_name' => $user['first_name']], function ($message) {
+                    $message->from('hanoi@gov.vn', trans('email.name'));
+                    $message->sender('hanoi@gov.vn', trans('email.name'));
+                    $message->to(Input::get('email'), Input::get('first_name'));
+                    $message->subject(trans('email.subject_register'));
+                });
                 Session::flash('notification', 'Đăng ký thành công.');
             } else {
                 Session::flash('notification', 'Email này đã được đăng ký. <br/>Vui lòng thử đăng nhập lại.');
@@ -99,4 +106,13 @@ class UserController extends Controller
         return Redirect::back();
     }
 
+    public function activation($user_id, $code)
+    {
+        $user = Sentinel::findById($user_id);
+        if (Activation::exists($user)) {
+
+        } else {
+
+        }
+    }
 }

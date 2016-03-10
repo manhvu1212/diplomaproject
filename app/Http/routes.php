@@ -22,14 +22,16 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::group(['namespace' => 'Backend', 'middleware' => 'guest'], function () {
         Route::get('/login', ['as' => 'login', 'uses' => function () {
-            return view('layout.backend.login');
+            return view('layout.frontend.login');
         }]);
         Route::post('/login', 'UserController@login');
 
         Route::get('/signup', ['as' => 'signup', 'uses' => function() {
-            return view('layout.backend.signup');
+            return view('layout.frontend.signup');
         }]);
         Route::post('/signup', 'UserController@signup');
+
+        Route::get('/activation/{user_id}/{code}', ['as' => 'activation', 'uses' => 'UserController@activation']);
     });
 
     Route::group(['as' => 'admin::', 'namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
