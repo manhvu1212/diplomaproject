@@ -42,7 +42,33 @@ Route::group(['middleware' => 'web'], function () {
     });
 });
 
+Route::get('/construct', function() {
+    Sentinel::getRoleRepository()->createModel()->create([
+        'name' => 'Admin',
+        'slug' => 'admin',
+    ]);
+    Sentinel::getRoleRepository()->createModel()->create([
+        'name' => 'Master',
+        'slug' => 'master',
+    ]);
+    Sentinel::getRoleRepository()->createModel()->create([
+        'name' => 'Member',
+        'slug' => 'member',
+    ]);
+    $credentials = [
+        'email'    => 'manhvu1212@gmail.com',
+        'password' => '12345678',
+        'first_name' => 'Vũ',
+        'last_name' => 'Nguyễn Mạnh',
+    ];
+    $user = Sentinel::register($credentials);
+    $activation = Activation::create($user);
+    Activation::complete($user, $activation['code']);
 
+    $role = Sentinel::findRoleBySlug('admin');
+    $role->users()->attach($user);
+
+});
 
 
 
