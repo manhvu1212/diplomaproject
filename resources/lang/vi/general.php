@@ -7,8 +7,5 @@
  */
 
 return [
-    'Error' => 'Lỗi',
-    'Email or Password is not correct' => 'Email hoặc Mật khẩu không chính xác.',
-    'Email or Password is not invalid' => 'Email hoặc Mật khẩu không hợp lệ.',
-    'This account has not been activated' => 'Tài khoản chưa được kích hoạt.'
+    'title_admin' => 'Quản lý hệ thống'
 ];

@@ -1,7 +1,7 @@
 <?php
 /**
  * Created by PhpStorm.
- * User: manhv
+ * User: manhvu
  * Date: 05/03/2016
  * Time: 9:43 AM
  */
@@ -11,7 +11,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>AdminLTE 2 | Dashboard</title>
+    <title>{!! trans('generate.title_admin') !!}</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
     <!-- Bootstrap 3.3.5 -->
@@ -68,10 +68,9 @@
     <!-- BEGIN FOOTER -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b>Version</b> 2.3.0
+            <b><Vers></Vers>ion</b> 2.3.0
         </div>
-        <strong>Copyright &copy; 2014-2015 <a href="#">Almsaeed Studio</a>.</strong> All rights
-        reserved.
+        <strong>Copyright &copy; 2016 <a href="#">Nguyen Manh Vu</a>.</strong>
     </footer>
     <!-- END FOOTER -->
 </div>
