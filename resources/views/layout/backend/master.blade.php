@@ -26,18 +26,7 @@
          folder instead of downloading all of them to reduce the load. -->
     <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/dist/css/skins/_all-skins.min.css">
     <!-- iCheck -->
-    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/iCheck/flat/blue.css">
-    <!-- Morris chart -->
-    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/morris/morris.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Date Picker -->
-    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/datepicker/datepicker3.css">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/daterangepicker/daterangepicker-bs3.css">
-    <!-- bootstrap wysihtml5 - text editor -->
-    <link rel="stylesheet"
-          href="/assets/backend/AdminLTE-2.3.0/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+    <link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/iCheck/square/blue.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -68,7 +57,7 @@
     <!-- BEGIN FOOTER -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b><Vers></Vers>ion</b> 2.3.0
+            <b><Vers>2.3.0</Vers></b>
         </div>
         <strong>Copyright &copy; 2016 <a href="#">Nguyen Manh Vu</a>.</strong>
     </footer>
@@ -86,33 +75,18 @@
 </script>
 <!-- Bootstrap 3.3.5 -->
 <script src="/assets/backend/AdminLTE-2.3.0/bootstrap/js/bootstrap.min.js"></script>
-<!-- Morris.js charts -->
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/raphael/2.0.0/raphael-min.js"></script>
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/morris/morris.min.js"></script>
-<!-- Sparkline -->
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/sparkline/jquery.sparkline.min.js"></script>
-<!-- jvectormap -->
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-<!-- jQuery Knob Chart -->
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/knob/jquery.knob.js"></script>
-<!-- daterangepicker -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/daterangepicker/daterangepicker.js"></script>
-<!-- datepicker -->
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/datepicker/bootstrap-datepicker.js"></script>
-<!-- Bootstrap WYSIHTML5 -->
-<script src="/assets/backend/AdminLTE-2.3.0/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
 <!-- Slimscroll -->
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/slimScroll/jquery.slimscroll.min.js"></script>
 <!-- FastClick -->
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/fastclick/fastclick.min.js"></script>
+<!-- iCheck -->
+<script src="/assets/backend/AdminLTE-2.3.0/plugins/iCheck/icheck.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/backend/AdminLTE-2.3.0/dist/js/app.min.js"></script>
-<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-<script src="/assets/backend/AdminLTE-2.3.0/dist/js/pages/dashboard.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="/assets/backend/AdminLTE-2.3.0/dist/js/demo.js"></script>
+<!-- Site script -->
+<script src="/js/site.js"></script>
 
 @yield('script')
 

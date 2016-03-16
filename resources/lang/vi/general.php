@@ -7,5 +7,6 @@
  */
 
 return [
-    'title_admin' => 'Quản lý hệ thống'
+    'title_admin' => 'Quản lý hệ thống',
+
 ];

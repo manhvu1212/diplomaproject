@@ -23,9 +23,16 @@ use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
-    public function index()
+    public function index($role = null)
     {
-        $users = (new User())->all();
+        $userModel = new User();
+        $users = $userModel->all();
+        $countUser = count($users);
+        if ($role != null) {
+            $role = Sentinel::findRoleBySlug($role);
+            $users = $userModel->where('role_id', '=', [$role['_id']])->get();
+        }
+
         foreach ($users as &$value) {
             $user = Sentinel::findById($value->_id);
             if (Activation::exists($user)) {
@@ -40,6 +47,7 @@ class UserController extends Controller
 
         return view('layout.backend.user.index')
             ->with(array(
+                'countUser' => $countUser,
                 'users' => $users,
                 'roles' => $roles
             ));
@@ -110,7 +118,12 @@ class UserController extends Controller
     {
         $user = Sentinel::findById($user_id);
         if (Activation::exists($user)) {
+            if (Activation::complete($user, $code)) {
+                $role = Sentinel::findRoleBySlug('member');
+                $role->users()->attach($user);
+            } else {
 
+            }
         } else {
 
         }

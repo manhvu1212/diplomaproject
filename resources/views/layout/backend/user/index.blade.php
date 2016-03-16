@@ -9,79 +9,90 @@
 
 @extends('layout.backend.master')
 
+@section('style')
+        <!-- DataTables -->
+<link rel="stylesheet" href="/assets/backend/AdminLTE-2.3.0/plugins/datatables/dataTables.bootstrap.css">
+<link rel="stylesheet" href="/css/user.css">
+@endsection
+
+@section('script')
+        <!-- DataTables -->
+<script src="/assets/backend/AdminLTE-2.3.0/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="/assets/backend/AdminLTE-2.3.0/plugins/datatables/dataTables.bootstrap.min.js"></script>
+<script src="/js/user.js"></script>
+@endsection
+
 @section('content')
 
     <section class="content-header">
         <h1>
-            Simple Tables
+            Thành viên
             <small>preview of simple tables</small>
         </h1>
         <ol class="breadcrumb">
-            <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-            <li><a href="#">Tables</a></li>
-            <li class="active">Simple</li>
+            <li><a href="{!! route('admin::dashboard') !!}"><i class="fa fa-dashboard"></i> Home</a></li>
+            <li class="active">Thành viên</li>
         </ol>
     </section>
-
-    {!! $users !!}
-    <br/><br/>
-    {!! $roles !!}
 
     <section class="content">
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
                     <div class="box-header">
-                        <a href="#" class="btn btn-sm bg-navy btn-flat">Thêm</a>
-
-                        <div class="box-tools">
-
-                            <div class="input-group" style="width: 150px;">
-                                <input type="text" name="table_search" class="form-control input-sm pull-right"
-                                       placeholder="Search">
-                                <div class="input-group-btn">
-                                    <button class="btn btn-sm btn-default"><i class="fa fa-search"></i></button>
-                                </div>
-                            </div>
-                        </div>
+                        <a href="{!! route('admin::user::index') !!}"
+                           class="btn btn-primary btn-flat btn-role {!! (Request::is('admin/user')) ? 'disabled' : '' !!}">
+                            {!! trans('role.all') !!}
+                            &nbsp;
+                            <span class="badge bg-yellow">
+                                {!! $countUser !!}
+                            </span>
+                        </a>
+                        @foreach($roles as $role)
+                            <a href="{!! route('admin::user::index', ['role' => $role['slug']]) !!}"
+                               class="btn btn-primary btn-flat btn-role {!! (Request::is('admin/user/' . $role['slug'])) ? 'disabled' : '' !!}">
+                                {!! trans('role.' . $role['slug']) !!}
+                                &nbsp;
+                                <span class="badge bg-yellow">{!! count($role['user_id']) !!}</span>
+                            </a>
+                        @endforeach
                     </div><!-- /.box-header -->
-                    <div class="box-body table-responsive no-padding">
-                        <table class="table table-hover">
+                    <div class="box-body">
+                        <table id="table-all-user" class="table table-hover">
+                            <thead>
                             <tr>
-                                <th>STT</th>
+                                <th><input type="checkbox" class="checkall"></th>
                                 <th>Họ và tên</th>
                                 <th>Email</th>
                                 <th>Trạng thái</th>
-                                <th>Reason</th>
+                                <th>Hành động</th>
                             </tr>
-                            <tr>
-                                <td>183</td>
-                                <td>John Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-success">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>219</td>
-                                <td>Alexander Pierce</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-warning">Pending</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>657</td>
-                                <td>Bob Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-primary">Approved</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
-                            <tr>
-                                <td>175</td>
-                                <td>Mike Doe</td>
-                                <td>11-7-2014</td>
-                                <td><span class="label label-danger">Denied</span></td>
-                                <td>Bacon ipsum dolor sit amet salami venison chicken flank fatback doner.</td>
-                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($users as $i => $user)
+                                <tr>
+                                    <td>
+                                        <input type="checkbox" name="user[]" value="{!! $user['_id'] !!}">
+                                    </td>
+                                    <td>{!! $user['first_name'] . " " . $user['last_name'] !!}</td>
+                                    <td>{!! $user['email'] !!}</td>
+                                    <td>
+                                        @if($user['activation'] == 1)
+                                            <span class="label label-success">Đã kích hoạt</span>
+                                        @elseif($user['activation'] == 0)
+                                            <span class="label label-warning">Đang chờ</span>
+                                        @else
+                                            <span class="label label-danger">Chưa kích hoạt</span>
+                                        @endif
+                                    </td>
+                                    <td>
+                                        sửa
+                                        &nbsp;
+                                        xóa
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
                         </table>
                     </div><!-- /.box-body -->
                 </div><!-- /.box -->

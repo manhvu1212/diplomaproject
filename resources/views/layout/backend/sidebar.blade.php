@@ -36,17 +36,13 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
             <li class="header">MAIN NAVIGATION</li>
-            <li class="active treeview">
-                <a href="#">
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span> <i
-                            class="fa fa-angle-left pull-right"></i>
+            <li class="{!! (Request::is('admin')) ? 'active' : ''!!}">
+                <a href="">
+                    <i class="fa fa-th"></i> <span>Bảng tin</span>
+                    {{--<small class="label pull-right bg-green">new</small>--}}
                 </a>
-                <ul class="treeview-menu">
-                    <li class="active"><a href="index.html"><i class="fa fa-circle-o"></i> Dashboard v1</a></li>
-                    <li><a href="index2.html"><i class="fa fa-circle-o"></i> Dashboard v2</a></li>
-                </ul>
             </li>
-            <li class="treeview">
+            <li class="treeview {!! (Request::is('admin/user*')) ? 'active' : '' !!}">
                 <a href="#">
                     <i class="fa fa-user"></i>
                     <span>Thành viên</span>
@@ -54,7 +50,7 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li><a href={!! route('admin::user::index') !!}><i class="fa fa-circle-o"></i> Tất cả người dùng</a></li>
+                    <li class="{!! (Request::is('admin/user')) ? 'active' : ''!!}"><a href={!! route('admin::user::index') !!}><i class="fa fa-circle-o"></i> Tất cả người dùng</a></li>
                     <li><a href={{-- --}}><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                     <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
                     <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed

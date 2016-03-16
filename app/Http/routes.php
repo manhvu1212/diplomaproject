@@ -37,7 +37,7 @@ Route::group(['middleware' => 'web'], function () {
     Route::group(['as' => 'admin::', 'namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
         Route::group(['as' => 'user::', 'prefix' => 'user'], function () {
-            Route::get('/', ['as' => 'index', 'uses' => 'UserController@index']);
+            Route::get('/{role?}', ['as' => 'index', 'uses' => 'UserController@index']);
         });
     });
 });
