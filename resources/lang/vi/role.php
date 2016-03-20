@@ -7,8 +7,8 @@
  */
 
 return [
-    'admin' => 'quản lý',
-    'master' => 'chuyên gia',
-    'member' => 'thành viên',
-    'all' => 'tất cả'
+    'admin' => 'Quản Lý',
+    'master' => 'Chuyên Gia',
+    'member' => 'Thành Viên',
+    'all' => 'Tất Cả'
 ];

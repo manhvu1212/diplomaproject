@@ -81,6 +81,8 @@
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/fastclick/fastclick.min.js"></script>
 <!-- iCheck -->
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/iCheck/icheck.min.js"></script>
+<!-- Bootstrap Confirmation -->
+<script src="/assets/backend/AdminLTE-2.3.0/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js"></script>
 <!-- AdminLTE App -->
 <script src="/assets/backend/AdminLTE-2.3.0/dist/js/app.min.js"></script>
 <!-- AdminLTE for demo purposes -->

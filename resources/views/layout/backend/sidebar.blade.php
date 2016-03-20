@@ -50,8 +50,8 @@
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="{!! (Request::is('admin/user')) ? 'active' : ''!!}"><a href={!! route('admin::user::index') !!}><i class="fa fa-circle-o"></i> Tất cả người dùng</a></li>
-                    <li><a href={{-- --}}><i class="fa fa-circle-o"></i> Thêm mới</a></li>
+                    <li class="{!! (Request::is('admin/user') || Request::is('admin/user/role/*')) ? 'active' : '' !!}"><a href={!! route('admin::user::index') !!}><i class="fa fa-circle-o"></i> Tất cả người dùng</a></li>
+                    <li class="{!! (Request::is('admin/user/add')) ? 'active' : '' !!}"><a href={!! route('admin::user::add') !!}><i class="fa fa-circle-o"></i> Thêm mới</a></li>
                     <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
                     <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed
                             Sidebar</a></li>

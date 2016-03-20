@@ -19,6 +19,7 @@
         <!-- DataTables -->
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/datatables/jquery.dataTables.min.js"></script>
 <script src="/assets/backend/AdminLTE-2.3.0/plugins/datatables/dataTables.bootstrap.min.js"></script>
+
 <script src="/js/user.js"></script>
 @endsection
 
@@ -49,8 +50,8 @@
                             </span>
                         </a>
                         @foreach($roles as $role)
-                            <a href="{!! route('admin::user::index', ['role' => $role['slug']]) !!}"
-                               class="btn btn-primary btn-flat btn-role {!! (Request::is('admin/user/' . $role['slug'])) ? 'disabled' : '' !!}">
+                            <a href="{!! route('admin::user::role', ['role' => $role['slug']]) !!}"
+                               class="btn btn-primary btn-flat btn-role {!! (Request::is('admin/user/role/' . $role['slug'])) ? 'disabled' : '' !!}">
                                 {!! trans('role.' . $role['slug']) !!}
                                 &nbsp;
                                 <span class="badge bg-yellow">{!! count($role['user_id']) !!}</span>
@@ -65,7 +66,9 @@
                                 <th>Họ và tên</th>
                                 <th>Email</th>
                                 <th>Trạng thái</th>
-                                <th>Hành động</th>
+                                <th></th>
+                                <th></th>
+                                <th></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -86,9 +89,28 @@
                                         @endif
                                     </td>
                                     <td>
-                                        sửa
-                                        &nbsp;
-                                        xóa
+                                        <a href="#" class="btn btn-xs btn-info btn-flat" title="xem">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a href="#" class="btn btn-xs btn-warning btn-flat" title="sửa">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-xs btn-danger btn-flat"
+                                                data-user-id="{!! $user['_id'] !!}"
+                                                data-toggle="confirmation"
+                                                data-title="Xóa?"
+                                                data-btn-ok-label="Có"
+                                                data-btn-cancel-label="Hủy"
+                                                data-singleton="true"
+                                                data-popout="true"
+                                                data-on-confirm="USER.deleteUser"
+                                        >
+                                            <i class="fa fa-trash-o"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

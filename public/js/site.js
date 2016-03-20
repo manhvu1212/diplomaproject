@@ -11,16 +11,21 @@ var SITE = {
         });
     },
     checkAll: function() {
-        $('.checkall').on('ifChecked', function(){
+        var eleCheck = $('.checkall');
+        eleCheck.on('ifChecked', function(){
             $('input[type=checkbox]').iCheck('check');
         });
-        $('.checkall').on('ifUnchecked', function(){
+        eleCheck.on('ifUnchecked', function(){
             $('input[type=checkbox]').iCheck('uncheck');
         });
+    },
+    confirmationAll: function() {
+        $('[data-toggle=confirmation]').confirmation();
     }
 };
 
 $(document).ready(function () {
     SITE.icheck();
     SITE.checkAll();
+    SITE.confirmationAll();
 });

@@ -8,10 +8,17 @@
 
 namespace App\Helpers;
 
+use App\Role;
+use Cartalyst\Sentinel\Laravel\Facades\Sentinel;
+
 class Utilities
 {
-    public static function getUserInfo()
+    public static function getUserInfo($userID = null)
     {
-        return 1;
+        return Sentinel::findById($userID);
+    }
+
+    public static function getAllRoles() {
+        return Role::all();
     }
 }

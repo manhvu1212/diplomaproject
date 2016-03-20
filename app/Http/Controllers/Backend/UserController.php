@@ -43,7 +43,7 @@ class UserController extends Controller
                 $value->activation = -1;
             }
         }
-        $roles = (new Role())->all();
+        $roles = Role::all();
 
         return view('layout.backend.user.index')
             ->with(array(
@@ -51,6 +51,12 @@ class UserController extends Controller
                 'users' => $users,
                 'roles' => $roles
             ));
+    }
+
+    public function add($userID = null) {
+        $roles = Role::all();
+        return view('layout.backend.user.add')
+            ->with(array('roles' => $roles));
     }
 
     public function login()
