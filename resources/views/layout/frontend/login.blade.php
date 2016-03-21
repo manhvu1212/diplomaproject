@@ -43,7 +43,7 @@
         <b>Đăng nhập</b>
     </div><!-- /.login-logo -->
 
-    @if(session()->has('notification'))
+    @if( session()->has('status') && !session('status'))
         <div class="box box-solid box-danger">
             <div class="box-header">
                 <h3 class="box-title">{!! trans('general.Error') !!}</h3>

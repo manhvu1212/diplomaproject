@@ -11,9 +11,11 @@
 
 @section('style')
     <link rel="stylesheet" href="/css/user.css">
-@endsection
+    @endsection
 
-@section('script')
+    @section('script')
+            <!-- Jquery Validate -->
+    <script src="/assets/backend/AdminLTE-2.3.0/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
     <script src="/js/user.js"></script>
 @endsection
 
@@ -40,6 +42,7 @@
                     <!-- /.box-header -->
                     <!-- form start -->
                     <form class="form-horizontal" method="post" action="/admin/user/save" id="form-add-user">
+                        {!! csrf_field() !!}
                         <div class="box-body">
                             <div class="form-group">
                                 <label class="col-sm-2 control-label">Chức vụ</label>
@@ -50,7 +53,7 @@
                                             <div class="col-sm-4">
                                                 <div class="checkbox icheck">
                                                     <label>
-                                                        <input type="checkbox" value="{!! $role['_id'] !!}"
+                                                        <input type="checkbox" value="{!! $role['slug'] !!}"
                                                                name="roles[]">
                                                         {!! trans('role.' . $role['slug']) !!}
                                                     </label>
@@ -86,9 +89,12 @@
 
                                 <div class="col-sm-10 col-md-8">
                                     <div class="input-group">
-                                        <input readonly type="text" name="password" class="form-control" placeholder="Mật khẩu">
+                                        <input readonly type="text" name="password" class="form-control"
+                                               placeholder="Mật khẩu">
                                         <span class="input-group-btn">
-                                            <button type="button" id="generatePassword" class="btn btn-info btn-flat">Khởi tạo</button>
+                                            <button type="button" id="generatePassword" class="btn btn-info btn-flat">
+                                                Khởi tạo
+                                            </button>
                                         </span>
                                     </div>
                                 </div>

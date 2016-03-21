@@ -10,6 +10,11 @@
         {!! route('activation', ['user_id' => $user_id, 'code' => $code]) !!}
     </a>
 </blockquote>
+@if(isset($password))
+    <p>
+        Mật khẩu đăng nhập: <em>{!! $password !!}</em>
+    </p>
+@endif
 <p>
     Cảm ơn {!! $first_name !!} đã đăng ký.
 </p>

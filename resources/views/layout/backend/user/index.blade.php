@@ -72,7 +72,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($users as $i => $user)
+                            @foreach($users as $user)
                                 <tr>
                                     <td>
                                         <input type="checkbox" name="user[]" value="{!! $user['_id'] !!}">
@@ -101,14 +101,15 @@
                                     <td>
                                         <a class="btn btn-xs btn-danger btn-flat"
                                                 data-user-id="{!! $user['_id'] !!}"
+                                                data-csrf-token="{!! csrf_token() !!}"
                                                 data-toggle="confirmation"
+                                                data-placement="left"
                                                 data-title="Xóa?"
                                                 data-btn-ok-label="Có"
                                                 data-btn-cancel-label="Hủy"
                                                 data-singleton="true"
                                                 data-popout="true"
-                                                data-on-confirm="USER.deleteUser"
-                                        >
+                                                data-on-confirm="USER.deleteUser">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>

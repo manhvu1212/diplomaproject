@@ -49,11 +49,54 @@ var USER = {
     },
 
     deleteUser: function() {
+        var userID = $(this).data('user-id');
+        var csrfToken = $(this).data('csrf-token');
+        $.ajax({
+            url: '/admin/user/delete/' + userID,
+            type: 'post',
+            dataType: 'json',
+            data: {
+                _token: csrfToken
+            },
+            success: function(data) {
+                console.log(data);
+                //if(data) {
+                //    $(this).parents('tr').remove();
+                //}
+            }
+        });
+    },
 
+    validateAddUser: function() {
+        var form = $('#form-add-user');
+        if (form.length > 0) {
+            form.validate({
+                rules: {
+                    first_name: {
+                        required: true
+                    },
+                    last_name: {
+                        required: true
+                    },
+                    email: {
+                        required: true,
+                        email: true
+                    },
+                    password: {
+                        required: true,
+                        minlength: 8
+                    }
+                },
+                errorPlacement: function (error, element) {
+                    return true;
+                }
+            });
+        }
     }
 };
 
 $(document).ready(function () {
     USER.datatable();
     USER.generatePassword();
+    USER.validateAddUser();
 });

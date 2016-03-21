@@ -12,7 +12,7 @@
 */
 
 Route::group(['middleware' => 'web'], function () {
-    Route::get('/', 'Controller@index');
+    Route::get('/', ['as' => 'index', 'uses' => 'Controller@index']);
 
     Route::get('/logout', ['as' => 'logout', 'uses' => function () {
         $user = Sentinel::getUser();
@@ -36,12 +36,14 @@ Route::group(['middleware' => 'web'], function () {
 
     Route::group(['as' => 'admin::', 'namespace' => 'Backend', 'prefix' => 'admin', 'middleware' => 'admin'], function () {
         Route::get('/', ['as' => 'dashboard', 'uses' => 'AdminController@index']);
+
         Route::group(['as' => 'user::', 'prefix' => 'user'], function () {
             Route::get('/', ['as' => 'index', 'uses' => 'UserController@index']);
             Route::get('/role/{role}', ['as' => 'role', 'uses' => 'UserController@index']);
             Route::get('/add', ['as' => 'add', 'uses' => 'UserController@add']);
             Route::get('/edit/{userID}', ['as' => 'edit', 'uses' => 'UserController@add']);
-            Route::delete('/{userID}', ['as' => 'delete', 'uses' => 'UserController@delete']);
+            Route::post('/save/{userID?}', ['as' => 'save', 'uses' => 'UserController@save']);
+            Route::post('/delete/{userID}', ['as' => 'delete', 'uses' => 'UserController@delete']);
         });
     });
 });
