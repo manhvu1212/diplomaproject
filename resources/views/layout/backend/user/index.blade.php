@@ -37,6 +37,18 @@
     </section>
 
     <section class="content">
+        @if (session()->has('status'))
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert {!! session('status') ? 'alert-success' : 'alert-danger' !!} alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa {!! session('status') ? 'fa-check' : 'fa-ban' !!}"></i> {!! session('status') ? 'Thành công!' : 'Lỗi!' !!}</h4>
+                        {!! session('notification') !!}
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-xs-12">
                 <div class="box">
@@ -89,12 +101,12 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-xs btn-info btn-flat" title="xem">
+                                        <a href="" class="btn btn-xs btn-info btn-flat" title="xem">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-xs btn-warning btn-flat" title="sửa">
+                                        <a href="{!! route('admin::user::edit', $user['_id']) !!}" class="btn btn-xs btn-warning btn-flat" title="sửa">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                     </td>

@@ -49,7 +49,7 @@ class EloquentRole extends Model implements RoleInterface, PermissibleInterface
      *
      * @var string
      */
-    protected static $usersModel = 'Cartalyst\Sentinel\Users\EloquentUser';
+    protected static $usersModel = 'App\Sentinel\Users\EloquentUser';
 
     /**
      * The Users relationship.

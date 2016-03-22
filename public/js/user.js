@@ -9,7 +9,7 @@ var USER = {
             table.DataTable({
                 "columnDefs": [
                     {
-                        "targets": [0,4,5,6],
+                        "targets": [0, 4, 5, 6],
                         "searchable": false,
                         "sortable": false
                     },
@@ -35,7 +35,7 @@ var USER = {
 
     generatePassword: function () {
         var btnGenPass = $('#generatePassword');
-        btnGenPass.on('click', function(){
+        btnGenPass.on('click', function () {
             var minLength = 8,
                 maxLength = 16,
                 randomLength = Math.floor(Math.random() * (maxLength - minLength)) + minLength,
@@ -48,9 +48,10 @@ var USER = {
         });
     },
 
-    deleteUser: function() {
-        var userID = $(this).data('user-id');
-        var csrfToken = $(this).data('csrf-token');
+    deleteUser: function () {
+        var elmDelete = $(this);
+        var userID = elmDelete.data('user-id');
+        var csrfToken = elmDelete.data('csrf-token');
         $.ajax({
             url: '/admin/user/delete/' + userID,
             type: 'post',
@@ -58,16 +59,15 @@ var USER = {
             data: {
                 _token: csrfToken
             },
-            success: function(data) {
-                console.log(data);
-                //if(data) {
-                //    $(this).parents('tr').remove();
-                //}
+            success: function (data) {
+                if (!data['user']) {
+                    elmDelete.parents('tr').remove();
+                }
             }
         });
     },
 
-    validateAddUser: function() {
+    validateAddUser: function () {
         var form = $('#form-add-user');
         if (form.length > 0) {
             form.validate({

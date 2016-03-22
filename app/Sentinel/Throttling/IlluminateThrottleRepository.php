@@ -119,7 +119,7 @@ class IlluminateThrottleRepository implements ThrottleRepositoryInterface
      * @return void
      */
     public function __construct(
-        $model = 'Cartalyst\Sentinel\Throttling\EloquentThrottle',
+        $model = 'App\Sentinel\Throttling\EloquentThrottle',
         $globalInterval = null,
         $globalThresholds = null,
         $ipInterval = null,

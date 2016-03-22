@@ -56,8 +56,12 @@ class UserController extends Controller
     public function add($userID = null)
     {
         $roles = Role::all();
+        $user = Sentinel::findById($userID);
         return view('layout.backend.user.add')
-            ->with(array('roles' => $roles));
+            ->with(array(
+                'roles' => $roles,
+                'user' => $user
+            ));
     }
 
     public function save($userID = null)
@@ -115,12 +119,12 @@ class UserController extends Controller
             } else {
                 $user = Sentinel::update(Sentinel::findById($userID), $credentials);
                 $userRoles = $user['role_id'];
-                foreach($userRoles as $userRole) {
+                foreach ($userRoles as $userRole) {
                     $role = Sentinel::findRoleById($userRole);
                     $role->users()->detach($user);
                 }
             }
-            if(isset($user)) {
+            if (isset($user)) {
                 foreach ($roles as $role) {
                     Sentinel::findRoleBySlug($role)->users()->attach($user);
                 }
@@ -138,10 +142,23 @@ class UserController extends Controller
         ));
     }
 
-    public function delete($userID) {
+    public function delete($userID)
+    {
+        $status = false;
         $user = Sentinel::findById($userID);
         $user->delete();
-        return $user;
+        if (!Sentinel::findById($userID)) {
+            $status = true;
+            $notification = 'Đã xóa tài khoản ' . $user['email'];
+        } else {
+            $notification = 'Có lỗi không thể xóa. Hãy thử lại!';
+        }
+
+        return [
+            'user' => $user,
+            'status' => $status,
+            'notification' => $notification
+        ];
     }
 
     public function login()

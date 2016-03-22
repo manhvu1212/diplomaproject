@@ -28,11 +28,23 @@
         <ol class="breadcrumb">
             <li><a href="{!! route('admin::dashboard') !!}"><i class="fa fa-dashboard"></i> Home</a></li>
             <li><a href="{!! route('admin::user::index') !!}">Thành viên</a></li>
-            <li class="active">Thêm mới</li>
+            <li class="active">{!! (Request::is('admin/user/add')) ? 'Thêm mới' : 'Chỉnh sửa' !!}</li>
         </ol>
     </section>
 
     <section class="content">
+        @if (session()->has('status'))
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert {!! session('status') ? 'alert-success' : 'alert-danger' !!} alert-dismissible">
+                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
+                        <h4><i class="icon fa {!! session('status') ? 'fa-check' : 'fa-ban' !!}"></i> {!! session('status') ? 'Thành công!' : 'Lỗi!' !!}</h4>
+                        {!! session('notification') !!}
+                    </div>
+                </div>
+            </div>
+        @endif
+
         <div class="row">
             <div class="col-md-12">
                 <div class="box box-info">
@@ -41,7 +53,8 @@
                     </div>
                     <!-- /.box-header -->
                     <!-- form start -->
-                    <form class="form-horizontal" method="post" action="/admin/user/save" id="form-add-user">
+                    <form class="form-horizontal" method="post"
+                          action="/admin/user/save{!! isset($user) ? '/' . $user['_id'] : '' !!}" id="form-add-user">
                         {!! csrf_field() !!}
                         <div class="box-body">
                             <div class="form-group">
@@ -54,7 +67,7 @@
                                                 <div class="checkbox icheck">
                                                     <label>
                                                         <input type="checkbox" value="{!! $role['slug'] !!}"
-                                                               name="roles[]">
+                                                               name="roles[]" {!! (isset($user) && in_array($role['_id'], $user['role_id'])) ? 'checked' : '' !!}>
                                                         {!! trans('role.' . $role['slug']) !!}
                                                     </label>
                                                 </div>
@@ -68,11 +81,13 @@
                                 <label class="col-sm-2 control-label">Họ và tên</label>
 
                                 <div class="col-sm-5 col-md-4">
-                                    <input type="text" name="last_name" class="form-control" placeholder="Họ">
+                                    <input type="text" name="last_name" class="form-control" placeholder="Họ"
+                                           value="{!! isset($user) ? $user['last_name'] : '' !!}">
                                 </div>
 
                                 <div class="col-sm-5 col-md-4">
-                                    <input type="text" name="first_name" class="form-control" placeholder="Tên">
+                                    <input type="text" name="first_name" class="form-control" placeholder="Tên"
+                                           value="{!! isset($user) ? $user['first_name'] : '' !!}">
                                 </div>
                             </div>
 
@@ -80,7 +95,8 @@
                                 <label class="col-sm-2 control-label">Email</label>
 
                                 <div class="col-sm-10 col-md-8">
-                                    <input type="email" name="email" class="form-control" placeholder="Email">
+                                    <input type="email" name="email" class="form-control" placeholder="Email"
+                                           value="{!! isset($user) ? $user['email'] : '' !!}">
                                 </div>
                             </div>
 
@@ -89,10 +105,13 @@
 
                                 <div class="col-sm-10 col-md-8">
                                     <div class="input-group">
-                                        <input readonly type="text" name="password" class="form-control"
-                                               placeholder="Mật khẩu">
+                                        <input readonly type="{!! isset($user) ? 'password' : 'text' !!}"
+                                               name="password" class="form-control"
+                                               placeholder="Mật khẩu"
+                                               value="{!! isset($user) ? 'matkhaubimat' : '' !!}">
                                         <span class="input-group-btn">
-                                            <button type="button" id="generatePassword" class="btn btn-info btn-flat">
+                                            <button type="button" id="generatePassword"
+                                                    class="btn btn-info btn-flat" {!! isset($user) ? 'disabled' : '' !!}>
                                                 Khởi tạo
                                             </button>
                                         </span>
@@ -103,7 +122,7 @@
                         </div>
                         <!-- /.box-body -->
                         <div class="box-footer">
-                            <button type="submit" class="btn btn-flat btn-success center-block">Tạo mới</button>
+                            <button type="submit" class="btn btn-flat btn-success center-block">Lưu</button>
                         </div>
                         <!-- /.box-footer -->
                     </form>

@@ -36,7 +36,7 @@ class EloquentPersistence extends Model implements PersistenceInterface
      *
      * @var string
      */
-    protected static $usersModel = 'Cartalyst\Sentinel\Users\EloquentUser';
+    protected static $usersModel = 'App\Sentinel\Users\EloquentUser';
 
     /**
      * {@inheritDoc}

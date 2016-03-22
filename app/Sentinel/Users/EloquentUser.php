@@ -71,35 +71,35 @@ class EloquentUser extends Model implements RoleableInterface, PermissibleInterf
      *
      * @var string
      */
-    protected static $rolesModel = 'Cartalyst\Sentinel\Roles\EloquentRole';
+    protected static $rolesModel = 'App\Sentinel\Roles\EloquentRole';
 
     /**
      * The Eloquent persistences model name.
      *
      * @var string
      */
-    protected static $persistencesModel = 'Cartalyst\Sentinel\Persistences\EloquentPersistence';
+    protected static $persistencesModel = 'App\Sentinel\Persistences\EloquentPersistence';
 
     /**
      * The Eloquent activations model name.
      *
      * @var string
      */
-    protected static $activationsModel = 'Cartalyst\Sentinel\Activations\EloquentActivation';
+    protected static $activationsModel = 'App\Sentinel\Activations\EloquentActivation';
 
     /**
      * The Eloquent reminders model name.
      *
      * @var string
      */
-    protected static $remindersModel = 'Cartalyst\Sentinel\Reminders\EloquentReminder';
+    protected static $remindersModel = 'App\Sentinel\Reminders\EloquentReminder';
 
     /**
      * The Eloquent throttling model name.
      *
      * @var string
      */
-    protected static $throttlingModel = 'Cartalyst\Sentinel\Throttling\EloquentThrottle';
+    protected static $throttlingModel = 'App\Sentinel\Throttling\EloquentThrottle';
 
     /**
      * Returns an array of login column names.
