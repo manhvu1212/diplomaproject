@@ -30,7 +30,7 @@ class UserController extends Controller
         $countUser = count($users);
         if ($role != null) {
             $role = Sentinel::findRoleBySlug($role);
-            $users = $userModel->where('role_id', '=', [$role['_id']])->get();
+            $users = $userModel->whereIn('role_id', [$role['_id']])->get();
         }
 
         foreach ($users as &$value) {
