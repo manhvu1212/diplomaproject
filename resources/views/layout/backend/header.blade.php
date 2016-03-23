@@ -37,7 +37,8 @@
                                 <li><!-- start message -->
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user2-160x160.jpg" class="img-circle"
+                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user2-160x160.jpg"
+                                                 class="img-circle"
                                                  alt="User Image">
                                         </div>
                                         <h4>
@@ -50,7 +51,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user3-128x128.jpg" class="img-circle"
+                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user3-128x128.jpg"
+                                                 class="img-circle"
                                                  alt="User Image">
                                         </div>
                                         <h4>
@@ -63,7 +65,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user4-128x128.jpg" class="img-circle"
+                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user4-128x128.jpg"
+                                                 class="img-circle"
                                                  alt="User Image">
                                         </div>
                                         <h4>
@@ -76,7 +79,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user3-128x128.jpg" class="img-circle"
+                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user3-128x128.jpg"
+                                                 class="img-circle"
                                                  alt="User Image">
                                         </div>
                                         <h4>
@@ -89,7 +93,8 @@
                                 <li>
                                     <a href="#">
                                         <div class="pull-left">
-                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user4-128x128.jpg" class="img-circle"
+                                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user4-128x128.jpg"
+                                                 class="img-circle"
                                                  alt="User Image">
                                         </div>
                                         <h4>
@@ -227,16 +232,19 @@
                 <!-- User Account: style can be found in dropdown.less -->
                 <li class="dropdown user user-menu">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user2-160x160.jpg" class="user-image" alt="User Image">
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user2-160x160.jpg" class="user-image"
+                             alt="User Image">
+                        <span class="hidden-xs">{!! $user['last_name'] . ' ' . $user['first_name'] !!}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
                         <li class="user-header">
-                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                            <img src="/assets/backend/AdminLTE-2.3.0/dist/img/user2-160x160.jpg" class="img-circle"
+                                 alt="User Image">
                             <p>
-                                Alexander Pierce - Web Developer
-                                <small>Member since Nov. 2012</small>
+                                {!! $user['last_name'] . ' ' . $user['first_name'] !!}
+                                <small>Đăng ký từ
+                                    tháng {!! \Carbon\Carbon::parse($user['created_at'])->format('m Y') !!}</small>
                             </p>
                         </li>
                         <!-- Menu Body -->
@@ -261,10 +269,6 @@
                             </div>
                         </li>
                     </ul>
-                </li>
-                <!-- Control Sidebar Toggle Button -->
-                <li>
-                    <a href="#" data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
                 </li>
             </ul>
         </div>

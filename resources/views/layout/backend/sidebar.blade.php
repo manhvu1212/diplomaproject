@@ -18,14 +18,14 @@
                      alt="User Image">
             </div>
             <div class="pull-left info">
-                <p>Alexander Pierce</p>
+                <p>{!! $user['last_name'] . ' ' . $user['first_name'] !!}</p>
                 <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
         <!-- search form -->
         <form action="#" method="get" class="sidebar-form">
             <div class="input-group">
-                <input type="text" name="q" class="form-control" placeholder="Search...">
+                <input type="text" name="q" class="form-control" placeholder="Tìm kiếm...">
               <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -39,24 +39,32 @@
             <li class="{!! (Request::is('admin')) ? 'active' : ''!!}">
                 <a href="">
                     <i class="fa fa-th"></i> <span>Bảng tin</span>
-                    {{--<small class="label pull-right bg-green">new</small>--}}
                 </a>
             </li>
             <li class="treeview {!! (Request::is('admin/user*')) ? 'active' : '' !!}">
                 <a href="#">
                     <i class="fa fa-user"></i>
                     <span>Thành viên</span>
-                    {{--<span class="label label-primary pull-right">4</span>--}}
                     <i class="fa fa-angle-left pull-right"></i>
                 </a>
                 <ul class="treeview-menu">
                     <li class="{!! (Request::is('admin/user') || Request::is('admin/user/role/*')) ? 'active' : '' !!}"><a href={!! route('admin::user::index') !!}><i class="fa fa-circle-o"></i> Tất cả người dùng</a></li>
                     <li class="{!! (Request::is('admin/user/add')) ? 'active' : '' !!}"><a href={!! route('admin::user::add') !!}><i class="fa fa-circle-o"></i> Thêm mới</a></li>
-                    <li><a href="pages/layout/fixed.html"><i class="fa fa-circle-o"></i> Fixed</a></li>
-                    <li><a href="pages/layout/collapsed-sidebar.html"><i class="fa fa-circle-o"></i> Collapsed
-                            Sidebar</a></li>
                 </ul>
             </li>
+
+            <li class="treeview {!! (Request::is('admin/media*')) ? 'active' : '' !!}">
+                <a href="#">
+                    <i class="fa fa-book"></i>
+                    <span>Thư viện</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                <ul class="treeview-menu">
+                    <li class="{!! Request::is('admin/media') ? 'active' : '' !!}"><a href={!! route('admin::media::index') !!}><i class="fa fa-circle-o"></i> Tất cả tệp tin</a></li>
+                    <li class="{!! (Request::is('admin/media/setting')) ? 'active' : '' !!}"><a href={!! route('admin::user::add') !!}><i class="fa fa-circle-o"></i> Cài đặt</a></li>
+                </ul>
+            </li>
+
             <li>
                 <a href="pages/widgets.html">
                     <i class="fa fa-th"></i> <span>Widgets</span>

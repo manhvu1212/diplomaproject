@@ -42,7 +42,9 @@
                 <div class="col-md-12">
                     <div class="alert {!! session('status') ? 'alert-success' : 'alert-danger' !!} alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
-                        <h4><i class="icon fa {!! session('status') ? 'fa-check' : 'fa-ban' !!}"></i> {!! session('status') ? 'Thành công!' : 'Lỗi!' !!}</h4>
+                        <h4>
+                            <i class="icon fa {!! session('status') ? 'fa-check' : 'fa-ban' !!}"></i> {!! session('status') ? 'Thành công!' : 'Lỗi!' !!}
+                        </h4>
                         {!! session('notification') !!}
                     </div>
                 </div>
@@ -101,27 +103,29 @@
                                         @endif
                                     </td>
                                     <td>
-                                        <a href="" class="btn btn-xs btn-info btn-flat" title="xem">
+                                        <a href="{!! route('admin::user::view', $user['_id']) !!}"
+                                           class="btn btn-xs btn-info btn-flat" title="xem">
                                             <i class="fa fa-eye"></i>
                                         </a>
                                     </td>
                                     <td>
-                                        <a href="{!! route('admin::user::edit', $user['_id']) !!}" class="btn btn-xs btn-warning btn-flat" title="sửa">
+                                        <a href="{!! route('admin::user::edit', $user['_id']) !!}"
+                                           class="btn btn-xs btn-warning btn-flat" title="sửa">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                     </td>
                                     <td>
                                         <a class="btn btn-xs btn-danger btn-flat"
-                                                data-user-id="{!! $user['_id'] !!}"
-                                                data-csrf-token="{!! csrf_token() !!}"
-                                                data-toggle="confirmation"
-                                                data-placement="left"
-                                                data-title="Xóa?"
-                                                data-btn-ok-label="Có"
-                                                data-btn-cancel-label="Hủy"
-                                                data-singleton="true"
-                                                data-popout="true"
-                                                data-on-confirm="USER.deleteUser">
+                                           data-user-id="{!! $user['_id'] !!}"
+                                           data-csrf-token="{!! csrf_token() !!}"
+                                           data-toggle="confirmation"
+                                           data-placement="left"
+                                           data-title="Xóa?"
+                                           data-btn-ok-label="Có"
+                                           data-btn-cancel-label="Hủy"
+                                           data-singleton="true"
+                                           data-popout="true"
+                                           data-on-confirm="USER.deleteUser">
                                             <i class="fa fa-trash-o"></i>
                                         </a>
                                     </td>

@@ -44,6 +44,11 @@ Route::group(['middleware' => 'web'], function () {
             Route::get('/edit/{userID}', ['as' => 'edit', 'uses' => 'UserController@add']);
             Route::post('/save/{userID?}', ['as' => 'save', 'uses' => 'UserController@save']);
             Route::post('/delete/{userID}', ['as' => 'delete', 'uses' => 'UserController@delete']);
+            Route::get('/{userID}', ['as' => 'view', 'uses' => 'UserController@view']);
+        });
+
+        Route::group(['as' => 'media::', 'prefix' => 'media'], function() {
+            Route::get('/', ['as' => 'index', 'uses' => 'MediaController@index']);
         });
     });
 });

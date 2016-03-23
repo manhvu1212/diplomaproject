@@ -1,12 +1,3 @@
-<?php
-/**
- * Created by PhpStorm.
- * User: manhv
- * Date: 20/03/2016
- * Time: 9:24 AM
- */
-?>
-
 @extends('layout.backend.master')
 
 @section('style')

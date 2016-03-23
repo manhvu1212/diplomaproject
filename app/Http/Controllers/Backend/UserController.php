@@ -53,6 +53,10 @@ class UserController extends Controller
             ));
     }
 
+    public function view($userID) {
+        return view('layout.backend.user.view');
+    }
+
     public function add($userID = null)
     {
         $roles = Role::all();
@@ -153,7 +157,7 @@ class UserController extends Controller
         $status = false;
         $user = Sentinel::findById($userID);
         $user->delete();
-        if (!Sentinel::findById($userID)) {
+        if (!($user = Sentinel::findById($userID))) {
             $status = true;
             $notification = 'Đã xóa tài khoản ' . $user['email'];
         } else {

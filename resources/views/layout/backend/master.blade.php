@@ -6,6 +6,10 @@
  * Time: 9:43 AM
  */
 ?>
+        <?php
+    $user = Sentinel::getUser();
+?>
+
         <!DOCTYPE html>
 <html>
 <head>
@@ -60,7 +64,9 @@
     <!-- BEGIN FOOTER -->
     <footer class="main-footer">
         <div class="pull-right hidden-xs">
-            <b><Vers>2.3.0</Vers></b>
+            <b>
+                <Vers>2.3.0</Vers>
+            </b>
         </div>
         <strong>Copyright &copy; 2016 <a href="#">Nguyen Manh Vu</a>.</strong>
     </footer>

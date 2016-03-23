@@ -60,7 +60,7 @@ var USER = {
                 _token: csrfToken
             },
             success: function (data) {
-                if (!data['user']) {
+                if (!data.user) {
                     elmDelete.parents('tr').remove();
                 }
             }

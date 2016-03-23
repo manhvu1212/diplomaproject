@@ -15,10 +15,13 @@ class Utilities
 {
     public static function getUserInfo($userID = null)
     {
-        return Sentinel::findById($userID);
+        if (!($user = Sentinel::findById($userID))) {
+            return [
+                '_id' => $user['_id'],
+                'name' => $user['last_name'] . ' ' . $user['first_name']
+            ];
+        }
+        return null;
     }
 
-    public static function getAllRoles() {
-        return Role::all();
-    }
 }
