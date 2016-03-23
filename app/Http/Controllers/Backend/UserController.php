@@ -76,14 +76,15 @@ class UserController extends Controller
         );
         if (!Validator::make(Input::all(), $rules)->fails()) {
             $roles = Input::has('roles') ? Input::get('roles') : array('member');
-            $credentials = (array(
-                'first_name' => Input::get('first_name'),
-                'last_name' => Input::get('last_name'),
-                'email' => Input::get('email'),
-                'password' => Input::get('password')
-            ));
+
             if ($userID == null) {
-                if (Sentinel::findByCredentials(['login' => Input::get('email')]) === null) {
+                $credentials = (array(
+                    'first_name' => trim(Input::get('first_name')),
+                    'last_name' => trim(Input::get('last_name')),
+                    'email' => trim(Input::get('email')),
+                    'password' => Input::get('password')
+                ));
+                if (Sentinel::findByCredentials(['login' => trim(Input::get('email'))]) === null) {
                     $user = Sentinel::register($credentials);
                     $activation = Activation::create($user);
                     if (Activation::complete($user, $activation['code'])) {
@@ -94,7 +95,7 @@ class UserController extends Controller
                         ], function ($message) {
                             $message->from('hanoi@gmail.com', trans('email.name'));
                             $message->sender('hanoi@gmail.com', trans('email.name'));
-                            $message->to(Input::get('email'), Input::get('first_name'));
+                            $message->to(trim(Input::get('email')), trim(Input::get('first_name')));
                             $message->subject(trans('email.subject_register'));
                         });
                     } else {
@@ -106,7 +107,7 @@ class UserController extends Controller
                         ], function ($message) {
                             $message->from('hanoi@gmail.com', trans('email.name'));
                             $message->sender('hanoi@gmail.com', trans('email.name'));
-                            $message->to(Input::get('email'), Input::get('first_name'));
+                            $message->to(trim(Input::get('email')), trim(Input::get('first_name')));
                             $message->subject(trans('email.subject_register'));
                         });
                         $notification = 'Tạo tài khoản thành công. Email kích hoạt đã được gửi.';
@@ -117,6 +118,11 @@ class UserController extends Controller
                     $notification = 'Email này đã được đăng kí. Xin hãy kiểm tra lại.';
                 }
             } else {
+                $credentials = (array(
+                    'first_name' => trim(Input::get('first_name')),
+                    'last_name' => trim(Input::get('last_name')),
+                    'email' => trim(Input::get('email')),
+                ));
                 $user = Sentinel::update(Sentinel::findById($userID), $credentials);
                 $userRoles = $user['role_id'];
                 foreach ($userRoles as $userRole) {
@@ -171,7 +177,7 @@ class UserController extends Controller
         );
         if (!Validator::make($input, $rules)->fails()) {
             $credentials = [
-                'email' => $input['email'],
+                'email' => trim($input['email']),
                 'password' => $input['password'],
             ];
             $remember = isset($input['remember']) ? true : false;
@@ -209,7 +215,7 @@ class UserController extends Controller
         );
         if (!Validator::make($input, $rules)->fails()) {
             $credentials = [
-                'login' => $input['email']
+                'login' => trim($input['email'])
             ];
             if (Sentinel::findByCredentials($credentials) === null) {
                 $user = Sentinel::register($input);
